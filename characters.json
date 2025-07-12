@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Warrior",
+    "class": "Warrior",
+    "health": 130,
+    "baseDamage": 18,
+    "defense": 10,
+    "speed": 8,
+    "moves": [
+      { "name": "Slash", "damage": 20, "type": "Physical", "unlockLevel": 1 },
+      { "name": "Shield Bash", "damage": 12, "type": "Physical", "unlockLevel": 2 },
+      { "name": "Battle Cry", "damage": 0, "type": "Buff", "unlockLevel": 3 },
+      { "name": "Power Strike", "damage": 28, "type": "Physical", "unlockLevel": 5 },
+      { "name": "Whirlwind", "damage": 22, "type": "Physical", "unlockLevel": 6 },
+      { "name": "Defender's Stance", "damage": 0, "type": "Buff", "unlockLevel": 7 },
+      { "name": "Cleave", "damage": 26, "type": "Physical", "unlockLevel": 8 },
+      { "name": "Iron Will", "damage": 0, "type": "Buff", "unlockLevel": 9 },
+      { "name": "Earth Shatter", "damage": 32, "type": "Physical", "unlockLevel": 10 },
+      { "name": "Last Stand", "damage": 0, "type": "Buff", "unlockLevel": 12 },
+      { "name": "Berserk", "damage": 40, "type": "Physical", "unlockLevel": 14 },
+      { "name": "Guardian's Roar", "damage": 0, "type": "Buff", "unlockLevel": 15 },
+      { "name": "Crushing Blow", "damage": 45, "type": "Physical", "unlockLevel": 16 },
+      { "name": "Unbreakable", "damage": 0, "type": "Buff", "unlockLevel": 17 },
+      { "name": "Heroic Charge", "damage": 50, "type": "Physical", "unlockLevel": 18 },
+      { "name": "Titan's Wrath", "damage": 60, "type": "Physical", "unlockLevel": 20 }
+    ]
+  },
+  {
+    "name": "Wizard",
+    "class": "Wizard",
+    "health": 85,
+    "baseDamage": 25,
+    "defense": 5,
+    "speed": 10,
+    "moves": [
+      { "name": "Fireball", "damage": 32, "type": "Magic", "unlockLevel": 1 },
+      { "name": "Ice Spike", "damage": 24, "type": "Magic", "unlockLevel": 2 },
+      { "name": "Arcane Shield", "damage": 0, "type": "Buff", "unlockLevel": 3 },
+      { "name": "Lightning Bolt", "damage": 36, "type": "Magic", "unlockLevel": 5 },
+      { "name": "Magic Missile", "damage": 18, "type": "Magic", "unlockLevel": 6 },
+      { "name": "Mana Surge", "damage": 0, "type": "Buff", "unlockLevel": 7 },
+      { "name": "Frost Nova", "damage": 28, "type": "Magic", "unlockLevel": 8 },
+      { "name": "Mystic Barrier", "damage": 0, "type": "Buff", "unlockLevel": 9 },
+      { "name": "Meteor", "damage": 40, "type": "Magic", "unlockLevel": 10 },
+      { "name": "Time Warp", "damage": 0, "type": "Buff", "unlockLevel": 12 },
+      { "name": "Chain Lightning", "damage": 44, "type": "Magic", "unlockLevel": 14 },
+      { "name": "Spell Echo", "damage": 0, "type": "Buff", "unlockLevel": 15 },
+      { "name": "Arcane Blast", "damage": 48, "type": "Magic", "unlockLevel": 16 },
+      { "name": "Elemental Mastery", "damage": 0, "type": "Buff", "unlockLevel": 17 },
+      { "name": "Comet", "damage": 55, "type": "Magic", "unlockLevel": 18 },
+      { "name": "Astral Storm", "damage": 65, "type": "Magic", "unlockLevel": 20 }
+    ]
+  },
+  {
+    "name": "Huntress",
+    "class": "Huntress",
+    "health": 105,
+    "baseDamage": 20,
+    "defense": 7,
+    "speed": 14,
+    "moves": [
+      { "name": "Arrow Shot", "damage": 18, "type": "Physical", "unlockLevel": 1 },
+      { "name": "Multi-Shot", "damage": 12, "type": "Physical", "unlockLevel": 2 },
+      { "name": "Trap", "damage": 0, "type": "Debuff", "unlockLevel": 3 },
+      { "name": "Eagle Eye", "damage": 0, "type": "Buff", "unlockLevel": 5 },
+      { "name": "Volley", "damage": 22, "type": "Physical", "unlockLevel": 6 },
+      { "name": "Camouflage", "damage": 0, "type": "Buff", "unlockLevel": 7 },
+      { "name": "Poison Arrow", "damage": 26, "type": "Physical", "unlockLevel": 8 },
+      { "name": "Falcon's Grace", "damage": 0, "type": "Buff", "unlockLevel": 9 },
+      { "name": "Rain of Arrows", "damage": 32, "type": "Physical", "unlockLevel": 10 },
+      { "name": "Snare", "damage": 0, "type": "Debuff", "unlockLevel": 12 },
+      { "name": "Deadeye", "damage": 40, "type": "Physical", "unlockLevel": 14 },
+      { "name": "Hunter's Focus", "damage": 0, "type": "Buff", "unlockLevel": 15 },
+      { "name": "Piercing Shot", "damage": 45, "type": "Physical", "unlockLevel": 16 },
+      { "name": "Nature's Call", "damage": 0, "type": "Buff", "unlockLevel": 17 },
+      { "name": "Snipe", "damage": 50, "type": "Physical", "unlockLevel": 18 },
+      { "name": "Predator's Mark", "damage": 60, "type": "Physical", "unlockLevel": 20 }
+    ]
+  }
+]

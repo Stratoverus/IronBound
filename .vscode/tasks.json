@@ -1,0 +1,56 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build Ironbound (All Files, SFML)",
+            "command": "C:/mingw64/bin/g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "main.cpp",
+                "core/Event.cpp",
+                "core/Character.cpp",
+                "core/Enemy.cpp",
+                "screens/MenuScreen.cpp",
+                "screens/NameEntryScreen.cpp",
+                "screens/SpriteSelectScreen.cpp",
+                "AnimatedSprite.cpp",
+                "screens/TransitionScreen.cpp",
+                "screens/DoorSelectionScreen.cpp",
+                "screens/PopupMenu.cpp",
+                "screens/CharacterStatsScreen.cpp",
+                "screens/CommonEnemy.cpp",
+                "screens/MysteryScreen.cpp",
+                "screens/MerchantScreen.cpp",
+                "screens/RestSiteScreen.cpp",
+                "screens/EliteScreen.cpp",
+                "screens/TreasureScreen.cpp",
+                "screens/MiniBossScreen.cpp",
+                "screens/MainBossScreen.cpp",
+                "screens/BattleScreen.cpp",
+                "-o",
+                "${workspaceFolder}/ironbound.exe",
+                "-IC:/SFML-3.0.0/include",
+                "-LC:/SFML-3.0.0/lib",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Builds all C++ source files for Ironbound with SFML support using standalone MinGW-w64 and SFML.",
+            "presentation": {
+                "reveal": "never"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
