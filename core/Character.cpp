@@ -68,7 +68,7 @@ std::vector<Character> Character::loadCharactersFromJSON(const std::string& file
         Character character(
             c["name"],
             c["class"],
-            c["hp"],
+            c["health"],
             c["baseDamage"],
             c["defense"],
             c["speed"],

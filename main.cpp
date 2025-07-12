@@ -6,6 +6,7 @@
 #include <ctime>
 #include <SFML/Graphics.hpp>
 #include <variant>
+#include <filesystem>
 #include "screens/MenuScreen.h"
 #include "screens/NameEntryScreen.h"
 #include "screens/SpriteSelectScreen.h"
@@ -14,6 +15,7 @@
 #include "screens/PopupMenu.h"
 #include "screens/CharacterStatsScreen.h"
 #include "core/Character.h"
+#include "core/Enemy.h"
 #include "screens/CommonEnemy.h"
 #include "screens/MysteryScreen.h"
 #include "screens/MerchantScreen.h"
@@ -30,7 +32,8 @@ enum class GameScreen { Menu, NameEntry, SpriteSelect, Transition, Event, Room }
 int main() {
     srand(static_cast<unsigned int>(time(0)));
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-    sf::RenderWindow window(desktop, "Ironbound: Turn-Based Battle Game");
+    sf::RenderWindow window(desktop, "Ironbound: Turn-Based Battle Game", sf::Style::None);
+    window.setPosition(sf::Vector2i(0, 0));
     sf::Font font;
     if (!font.openFromFile("C:/Windows/Fonts/arial.ttf")) {
         // Fallback: exit if font not found
@@ -221,33 +224,32 @@ int main() {
                 }
             } else if (currentScreen == GameScreen::SpriteSelect) {
                 if (spriteSelectScreen.handleEvent(event, window, spriteHovered, spriteSelected)) {
-                    std::string className = spriteSelected >= 0 && spriteSelected < spriteSelectScreen.characterNames.size() ? spriteSelectScreen.characterNames[spriteSelected] : "unknown";
-                    if (!className.empty()) className[0] = toupper(className[0]);
-                    static std::vector<Character> allChars = Character::loadCharactersFromJSON("characters.json");
-                    bool foundChar = false;
-                    auto toLower = [](const std::string& s) {
-                        std::string out = s;
-                        for (auto& ch : out) ch = std::tolower(ch);
-                        return out;
-                    };
-                    std::string selectedNameLower = toLower(spriteSelectScreen.characterNames[spriteSelected]);
-                    for (auto& c : allChars) {
-                        if (toLower(c.name) == selectedNameLower) {
-                            playerCharacter = c;
-                            hasPlayerCharacter = true;
-                            foundChar = true;
-                            break;
-                        }
+                static std::vector<Character> allChars = Character::loadCharactersFromJSON("characters.json");
+                std::string selectedName = (spriteSelected >= 0 && spriteSelected < spriteSelectScreen.characterNames.size()) ? spriteSelectScreen.characterNames[spriteSelected] : "";
+                auto toLowerTrim = [](const std::string& s) {
+                    std::string out;
+                    for (char ch : s) if (!isspace(ch)) out += std::tolower(ch);
+                    return out;
+                };
+                std::string selectedNameNorm = toLowerTrim(selectedName);
+                Character* selectedChar = nullptr;
+                for (auto& c : allChars) {
+                    if (toLowerTrim(c.name) == selectedNameNorm) {
+                        selectedChar = &c;
+                        break;
                     }
-                    if (!foundChar) {
-                        std::string message = "Error: Could not find character stats for '" + className + "'.\nPlease check that the folder name matches the character name in characters.json.";
-                        transitionScreen.setMessage(message);
-                        fadeOut = true; fading = true; nextScreen = GameScreen::Transition;
-                    } else {
-                        std::string message = playerName + ", you have picked to be the " + className + ".\nGood luck... Many adventures await...\n\nPress any key or click to continue.";
-                        transitionScreen.setMessage(message);
-                        fadeOut = true; fading = true; nextScreen = GameScreen::Transition;
-                    }
+                }
+                if (!selectedChar) {
+                    std::string message = "Error: Could not find character stats for '" + selectedName + "'.\nPlease check that the character name in the selection matches the name in characters.json.";
+                    transitionScreen.setMessage(message);
+                    fadeOut = true; fading = true; nextScreen = GameScreen::Transition;
+                } else {
+                    playerCharacter = *selectedChar;
+                    hasPlayerCharacter = true;
+                    std::string message = playerName + ", you have picked to be the " + selectedChar->name + ".\nGood luck... Many adventures await...\n\nPress any key or click to continue.";
+                    transitionScreen.setMessage(message);
+                    fadeOut = true; fading = true; nextScreen = GameScreen::Transition;
+                }
                 }
             } else if (currentScreen == GameScreen::Transition) {
                 if (event.is<sf::Event::KeyPressed>() || event.is<sf::Event::MouseButtonPressed>()) {
@@ -260,16 +262,8 @@ int main() {
                     std::vector<std::string> labels = doorSelectionScreen.getDoorLabels();
                     std::string selectedLabel = (doorSelected >= 0 && doorSelected < (int)labels.size()) ? labels[doorSelected] : "";
                     if (selectedLabel == "Common Enemy") {
-                        // Load all common enemies from JSON
-                        static std::vector<Character> allEnemies = Character::loadCharactersFromJSON("assets/enemies.json");
-                        std::vector<Character> commonEnemies;
-                        for (const auto& e : allEnemies) {
-                            if (e.charClass == "Monster" || e.charClass == "Beast" || e.charClass == "Undead") {
-                                commonEnemies.push_back(e);
-                            }
-                        }
-                        // Pick one at random
-                        Character selectedEnemy = commonEnemies.empty() ? Character() : commonEnemies[rand() % commonEnemies.size()];
+                        // Select a random common enemy using CommonEnemy utility
+                        Enemy selectedEnemy = CommonEnemy::getRandomCommonEnemy("enemies.json");
                         // Load enemy idle animation (Flight.png for flying enemies, else Idle.png)
                         std::string flightPath = selectedEnemy.spriteFolder + "Flight.png";
                         std::string idlePath = selectedEnemy.spriteFolder + "Idle.png";
@@ -278,10 +272,12 @@ int main() {
                         bool hasFlight = std::filesystem::exists(flightPath);
                         if (hasIdle) {
                             enemyIdleAnim = new AnimatedSprite({idlePath}, 0.18f);
-                            enemyIdleAnim->setScale({2.f, 2.f});
+                            // Mirror horizontally for right side (SFML 3.x)
+                            enemyIdleAnim->setScale(sf::Vector2f(-2.f, 2.f));
                         } else if (hasFlight) {
                             enemyIdleAnim = new AnimatedSprite({flightPath}, 0.18f);
-                            enemyIdleAnim->setScale({2.f, 2.f});
+                            // Mirror horizontally for right side (SFML 3.x)
+                            enemyIdleAnim->setScale(sf::Vector2f(-2.f, 2.f));
                         }
                         // Load player idle animation
                         AnimatedSprite* idleAnim = nullptr;

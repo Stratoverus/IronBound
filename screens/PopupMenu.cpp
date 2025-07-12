@@ -2,7 +2,7 @@
 
 PopupMenu::PopupMenu(sf::Font& fontRef)
     : font(fontRef), hovered(-1), visible(false) {
-    options = {"Resume", "Save Game", "Settings", "Abandon Run", "Save and Quit to Windows"};
+    options = {"Resume", "Save Game", "Settings", "Abandon Run", "Save and Quit to Windows", "Exit Without Saving"};
     background.setFillColor(sf::Color(30, 30, 40, 245));
     background.setOutlineColor(sf::Color::White);
     background.setOutlineThickness(3.f);
@@ -50,6 +50,10 @@ bool PopupMenu::handleEvent(const sf::Event& event, sf::RenderWindow& window, in
         if (mouseEvent->button == sf::Mouse::Button::Left && hovered != -1) {
             selected = hovered;
             hide();
+            // If 'Exit Without Saving' is selected, exit immediately
+            if (options[selected] == "Exit Without Saving") {
+                exit(0);
+            }
             return true;
         }
     }

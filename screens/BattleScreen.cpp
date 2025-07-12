@@ -1,4 +1,5 @@
 // Required by ScreenBase, but not used for BattleScreen
+#include "../core/Enemy.h"
 #include "BattleScreen.h"
 #include <SFML/Graphics.hpp>
 #include "../AnimatedSprite.h"
@@ -13,7 +14,12 @@ BattleScreen::BattleScreen(const sf::Font& font)
 void BattleScreen::start(int floorNum, const Character& playerChar, AnimatedSprite* playerIdleAnimPtr, const std::vector<Character>& enemyChars, const std::vector<AnimatedSprite*>& enemyIdleAnimsVec) {
     floorNumber = floorNum;
     player = playerChar;
-    enemies = enemyChars;
+    // Do not assign enemies here; only assign in Enemy overload
+}
+void BattleScreen::start(int floorNum, const Character& playerChar, AnimatedSprite* playerIdleAnimPtr, const std::vector<Enemy>& enemyChars, const std::vector<AnimatedSprite*>& enemyIdleAnimsVec) {
+    floorNumber = floorNum;
+    player = playerChar;
+    enemies = enemyChars; // This line will now accept std::vector<Enemy>
     enemyIdleAnims = enemyIdleAnimsVec;
     battleOver = false;
     introText = "You have met " + (enemies.empty() ? "an enemy!" : enemies[0].name + "!");
@@ -29,30 +35,31 @@ void BattleScreen::draw(sf::RenderWindow& window) {
 }
 
 void BattleScreen::drawCharacters(sf::RenderWindow& window) {
-    // Draw player idle animation on left
+    // Center player on left half, scale up for visibility
     if (playerIdleAnim) {
-        float px = 80.f + 64.f;
-        float py = window.getSize().y / 2.f;
+        float px = window.getSize().x * 0.25f;
+        float py = window.getSize().y * 0.66f; // Lower third for feet alignment
         static sf::Clock animClock;
         float dt = animClock.restart().asSeconds();
+        playerIdleAnim->setScale(sf::Vector2f(8.f, 8.f)); // Even larger for visibility
         playerIdleAnim->update(dt);
         playerIdleAnim->draw(window, sf::Vector2f(px, py));
     }
-    // Draw enemies on right
-    float enemySpacing = 160.f;
+    // Center enemy on right half, scale up for visibility and mirror horizontally
     for (size_t i = 0; i < enemyIdleAnims.size(); ++i) {
         AnimatedSprite* anim = enemyIdleAnims[i];
-        float ex = window.getSize().x - 160.f - i * enemySpacing;
-        float ey = window.getSize().y / 2.f;
+        float ex = window.getSize().x * 0.75f;
+        float ey = window.getSize().y * 0.66f; // Lower third for feet alignment
         if (anim) {
             static sf::Clock animClock;
             float dt = animClock.restart().asSeconds();
+            anim->setScale(sf::Vector2f(-8.f, 8.f)); // Even larger and mirrored horizontally
             anim->update(dt);
             anim->draw(window, sf::Vector2f(ex, ey));
         } else {
-            sf::CircleShape enemyShape(64.f);
+            sf::CircleShape enemyShape(320.f); // much bigger enemy shape
             enemyShape.setFillColor(sf::Color(180, 80, 80));
-            enemyShape.setPosition(sf::Vector2f(ex - 64.f, ey - 64.f));
+            enemyShape.setPosition(sf::Vector2f(ex - 320.f, ey - 320.f));
             window.draw(enemyShape);
         }
     }

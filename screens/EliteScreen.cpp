@@ -1,3 +1,4 @@
+#include "../core/Enemy.h"
 #include "EliteScreen.h"
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -29,4 +30,14 @@ bool EliteScreen::handleEvent(const sf::Event& event, sf::RenderWindow& window) 
 
 bool EliteScreen::isComplete() const {
     return complete;
+}
+
+Enemy EliteScreen::getRandomEliteEnemy(const std::string& jsonPath) {
+    static std::vector<Enemy> allEnemies = Enemy::loadEnemiesFromJSON(jsonPath);
+    std::vector<Enemy> filtered;
+    for (const auto& e : allEnemies) {
+        if (e.tag == "elite") filtered.push_back(e);
+    }
+    if (filtered.empty()) return Enemy();
+    return filtered[rand() % filtered.size()];
 }

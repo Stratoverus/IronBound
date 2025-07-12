@@ -1,7 +1,8 @@
 #pragma once
+#include "../core/Enemy.h"
+#include "../core/Character.h"
 #include <SFML/Graphics.hpp>
 #include "ScreenBase.h"
-#include "../core/Character.h"
 #include <string>
 #include "../AnimatedSprite.h"
 #include <vector>
@@ -10,6 +11,7 @@ class BattleScreen : public ScreenBase {
 public:
     BattleScreen(const sf::Font& font);
     void start(int floorNum, const Character& player, AnimatedSprite* playerIdleAnimPtr, const std::vector<Character>& enemies, const std::vector<AnimatedSprite*>& enemyIdleAnims);
+    void start(int floorNum, const Character& player, AnimatedSprite* playerIdleAnimPtr, const std::vector<Enemy>& enemies, const std::vector<AnimatedSprite*>& enemyIdleAnims);
     void start(int floorNum) override;
     void draw(sf::RenderWindow& window) override;
     bool handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
@@ -18,7 +20,7 @@ protected:
     const sf::Font& font;
     int floorNumber = 1;
     Character player;
-    std::vector<Character> enemies;
+    std::vector<Enemy> enemies;
     AnimatedSprite* playerIdleAnim = nullptr;
     std::vector<AnimatedSprite*> enemyIdleAnims;
     bool battleOver = false;

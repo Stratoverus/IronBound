@@ -10,6 +10,7 @@ public:
     void draw(sf::RenderWindow& window) override;
     bool handleEvent(const sf::Event& event, sf::RenderWindow& window) override;
     bool isComplete() const override;
+    static Enemy getRandomMiniBossEnemy(const std::string& jsonPath = "enemies.json");
 private:
     sf::Font font;
     sf::Text placeholderText;

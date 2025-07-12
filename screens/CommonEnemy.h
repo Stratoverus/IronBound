@@ -8,4 +8,7 @@ public:
     using BattleScreen::start;
     CommonEnemy(const sf::Font& font);
     void start(int floorNum) override;
+
+    // Utility to get a random common enemy from JSON
+    static Enemy getRandomCommonEnemy(const std::string& jsonPath = "enemies.json");
 };

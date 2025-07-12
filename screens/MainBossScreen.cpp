@@ -1,3 +1,4 @@
+#include "../core/Enemy.h"
 #include "MainBossScreen.h"
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -29,4 +30,14 @@ bool MainBossScreen::handleEvent(const sf::Event& event, sf::RenderWindow& windo
 
 bool MainBossScreen::isComplete() const {
     return complete;
+}
+
+Enemy MainBossScreen::getRandomBossEnemy(const std::string& jsonPath) {
+    static std::vector<Enemy> allEnemies = Enemy::loadEnemiesFromJSON(jsonPath);
+    std::vector<Enemy> filtered;
+    for (const auto& e : allEnemies) {
+        if (e.tag == "boss") filtered.push_back(e);
+    }
+    if (filtered.empty()) return Enemy();
+    return filtered[rand() % filtered.size()];
 }
