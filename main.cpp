@@ -16,7 +16,7 @@
 #include "screens/CharacterStatsScreen.h"
 #include "core/Character.h"
 #include "core/Enemy.h"
-#include "screens/CommonEnemy.h"
+#include "screens/CommonEnemyScreen.h"
 #include "screens/MysteryScreen.h"
 #include "screens/MerchantScreen.h"
 #include "screens/RestSiteScreen.h"
@@ -50,7 +50,7 @@ int main() {
     doorSelectionScreen.setWindowSize(window.getSize());
     PopupMenu popupMenu(font);
     CharacterStatsScreen statsScreen(font);
-    CommonEnemy commonEnemy(font);
+    CommonEnemyScreen commonEnemy(font);
     MysteryScreen mysteryScreen(font);
     MerchantScreen merchantScreen(font);
     RestSiteScreen restSiteScreen(font);
@@ -263,7 +263,7 @@ int main() {
                     std::string selectedLabel = (doorSelected >= 0 && doorSelected < (int)labels.size()) ? labels[doorSelected] : "";
                     if (selectedLabel == "Common Enemy") {
                         // Select a random common enemy using CommonEnemy utility
-                        Enemy selectedEnemy = CommonEnemy::getRandomCommonEnemy("enemies.json");
+                        Enemy selectedEnemy = CommonEnemyScreen::getRandomCommonEnemy("enemies.json");
                         // Load enemy idle animation (Flight.png for flying enemies, else Idle.png)
                         std::string flightPath = selectedEnemy.spriteFolder + "Flight.png";
                         std::string idlePath = selectedEnemy.spriteFolder + "Idle.png";
@@ -369,7 +369,13 @@ int main() {
             doorSelectionScreen.draw(window);
         } else if (currentScreen == GameScreen::Room) {
             // Draw only the active room screen
-            if (activeRoomScreen) activeRoomScreen->draw(window);
+            if (activeRoomScreen) {
+                // If the active room is a BattleScreen, update intro animation
+                if (auto* battle = dynamic_cast<BattleScreen*>(activeRoomScreen)) {
+                    battle->updateIntro(dt);
+                }
+                activeRoomScreen->draw(window);
+            }
         }
         // Fade transition overlay
         if (fading || fadeAlpha > 0.f) {

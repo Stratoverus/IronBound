@@ -11,7 +11,7 @@
     "speed": 2,
     "level": 1,
     "moves": [
-      { "name": "Slash", "damage": 6, "type": "Physical", "unlockLevel": 1 },
+      { "name": "Slash", "damage": 30, "type": "Physical", "unlockLevel": 1 },
       { "name": "Bomb Toss", "damage": 8, "type": "Physical", "unlockLevel": 2 }
     ]
   },
@@ -21,13 +21,13 @@
     "spriteFolder": "assets/sprites/enemies/CommonEnemies/Flying eye/",
     "class": "Monster",
     "tag": "common",
-    "hp": 18,
+    "hp": 22,
     "baseDamage": 5,
     "defense": 1,
     "speed": 3,
     "level": 1,
     "moves": [
-      { "name": "Peck", "damage": 5, "type": "Physical", "unlockLevel": 1 },
+      { "name": "Peck", "damage": 30, "type": "Physical", "unlockLevel": 1 },
       { "name": "Eye Beam", "damage": 7, "type": "Magic", "unlockLevel": 2 }
     ]
   },
@@ -37,13 +37,13 @@
     "spriteFolder": "assets/sprites/enemies/CommonEnemies/Mushroom/",
     "class": "Beast",
     "tag": "common",
-    "hp": 20,
+    "hp": 21,
     "baseDamage": 4,
     "defense": 3,
     "speed": 1,
     "level": 1,
     "moves": [
-      { "name": "Spore Cloud", "damage": 4, "type": "Magic", "unlockLevel": 1 },
+      { "name": "Spore Cloud", "damage": 30, "type": "Magic", "unlockLevel": 1 },
       { "name": "Headbutt", "damage": 6, "type": "Physical", "unlockLevel": 2 }
     ]
   },
@@ -59,7 +59,7 @@
     "speed": 2,
     "level": 1,
     "moves": [
-      { "name": "Sword Slash", "damage": 7, "type": "Physical", "unlockLevel": 1 },
+      { "name": "Sword Slash", "damage": 30, "type": "Physical", "unlockLevel": 1 },
       { "name": "Shield Bash", "damage": 5, "type": "Physical", "unlockLevel": 2 }
     ]
   }

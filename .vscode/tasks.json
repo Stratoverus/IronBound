@@ -19,7 +19,7 @@
                 "screens/DoorSelectionScreen.cpp",
                 "screens/PopupMenu.cpp",
                 "screens/CharacterStatsScreen.cpp",
-                "screens/CommonEnemy.cpp",
+                "screens/CommonEnemyScreen.cpp",
                 "screens/MysteryScreen.cpp",
                 "screens/MerchantScreen.cpp",
                 "screens/RestSiteScreen.cpp",

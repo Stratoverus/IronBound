@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Iron Sword",
+    "type": "weapon",
+    "moves": [
+      {
+        "name": "Slash",
+        "minEnergy": 2,
+        "maxEnergy": 6,
+        "damage": [10, 20, 35],
+        "enhancedThreshold": 5,
+        "description": "A basic sword attack. More energy = more damage."
+      },
+      {
+        "name": "Power Strike",
+        "minEnergy": 4,
+        "maxEnergy": 8,
+        "damage": [20, 40, 60],
+        "enhancedThreshold": 8,
+        "description": "A heavy attack. Enhanced at max energy."
+      }
+    ],
+    "gemSlots": 1
+  },
+  {
+    "name": "Basic Shield",
+    "type": "shield",
+    "block": {
+      "minEnergy": 2,
+      "maxBlock": 15,
+      "description": "Assign energy to block incoming damage."
+    }
+  },
+  {
+    "name": "Fire Gem",
+    "type": "gem",
+    "superMove": {
+      "name": "Inferno Slash",
+      "minEnergy": 10,
+      "damage": 100,
+      "description": "Super attack unlocked with enough energy and equipped to a weapon."
+    }
+  },
+  {
+    "name": "Arcane Staff",
+    "type": "weapon",
+    "moves": [
+      {
+        "name": "Magic Bolt",
+        "minEnergy": 3,
+        "maxEnergy": 7,
+        "damage": [15, 30, 50],
+        "enhancedThreshold": 6,
+        "description": "A ranged magic attack."
+      },
+      {
+        "name": "Mana Shield",
+        "minEnergy": 2,
+        "maxEnergy": 5,
+        "buff": "defense",
+        "buffAmount": [5, 10, 20],
+        "enhancedThreshold": 5,
+        "description": "Buffs defense for one turn."
+      }
+    ],
+    "gemSlots": 2
+  }
+  ,
+  {
+    "name": "Spear",
+    "type": "weapon",
+    "moves": [
+      {
+        "name": "Piercing Thrust",
+        "minEnergy": 2,
+        "maxEnergy": 6,
+        "damage": [12, 24, 40],
+        "enhancedThreshold": 5,
+        "description": "A precise spear attack. More energy = more damage."
+      },
+      {
+        "name": "Multi-Strike",
+        "minEnergy": 4,
+        "maxEnergy": 8,
+        "damage": [8, 16, 28],
+        "hits": [2, 3, 4],
+        "enhancedThreshold": 7,
+        "description": "Hits multiple times. More energy = more hits."
+      },
+      {
+        "name": "Hunter's Focus",
+        "minEnergy": 3,
+        "maxEnergy": 6,
+        "buff": "accuracy",
+        "buffAmount": [10, 20, 35],
+        "enhancedThreshold": 6,
+        "description": "Buffs accuracy for one turn."
+      }
+    ],
+    "gemSlots": 1
+  }
+]
