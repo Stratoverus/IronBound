@@ -1,0 +1,22 @@
+{
+  "prefixes": ["Enchanted", "Cursed", "Swift", "Heavy", "Mystic", "Ancient", "Blessed", "Vicious"],
+  "suffixes": ["of Fire", "of the Bear", "of Wisdom", "of Speed", "of the Fox", "of Shadows", "of the Titan"],
+  "buffs": [
+    { "type": "strength", "amountRange": [1, 10] },
+    { "type": "magicResist", "amountRange": [5, 20] },
+    { "type": "defense", "amountRange": [2, 15] },
+    { "type": "speed", "amountRange": [1, 8] },
+    { "type": "manaRegen", "amountRange": [1, 5] },
+    { "type": "accuracy", "amountRange": [5, 25] }
+  ],
+  "abilities": [
+    "Reflects spells",
+    "Heals on hit",
+    "Extra critical chance",
+    "Chance to dodge",
+    "Burns enemies",
+    "Freezes attackers",
+    "Restores energy each turn"
+  ],
+  "rarities": ["common", "rare", "epic", "legendary"]
+}

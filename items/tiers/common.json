@@ -1,0 +1,137 @@
+{
+  "swords": [
+    {
+      "name": "Basic Sword",
+      "moves": [
+        {
+          "name": "Simple Slash",
+          "minEnergy": 1,
+          "maxEnergy": 4,
+          "damage": [6, 12, 20],
+          "enhancedThreshold": 4,
+          "description": "A simple sword attack."
+        }
+      ],
+      "gemSlots": 0
+    },
+    {
+      "name": "Basic Dagger",
+      "moves": [
+        {
+          "name": "Stab",
+          "minEnergy": 1,
+          "maxEnergy": 3,
+          "damage": [4, 8, 12],
+          "enhancedThreshold": 3,
+          "description": "A quick dagger stab."
+        }
+      ],
+      "gemSlots": 0
+    }
+  ],
+  "spears": [
+    {
+      "name": "Basic Spear",
+      "moves": [
+        {
+          "name": "Jab",
+          "minEnergy": 1,
+          "maxEnergy": 4,
+          "damage": [7, 14, 22],
+          "enhancedThreshold": 4,
+          "description": "A quick spear jab."
+        }
+      ],
+      "gemSlots": 0
+    }
+  ],
+  "staffs": [
+    {
+      "name": "Basic Staff",
+      "moves": [
+        {
+          "name": "Arcane Tap",
+          "minEnergy": 1,
+          "maxEnergy": 4,
+          "damage": [5, 10, 18],
+          "enhancedThreshold": 4,
+          "description": "A basic magical attack."
+        }
+      ],
+      "gemSlots": 0
+    },
+    {
+      "name": "Wooden Staff",
+      "moves": [
+        {
+          "name": "Bonk",
+          "minEnergy": 1,
+          "maxEnergy": 3,
+          "damage": [3, 6, 10],
+          "enhancedThreshold": 3,
+          "description": "A simple staff attack."
+        }
+      ],
+      "gemSlots": 0
+    }
+  ],
+  "shields": [
+    {
+      "name": "Basic Shield",
+      "block": {
+        "minEnergy": 2,
+        "maxBlock": 15,
+        "description": "Assign energy to block incoming damage."
+      },
+      "gemSlots": 0
+    },
+    {
+      "name": "Wooden Shield",
+      "block": {
+        "minEnergy": 1,
+        "maxBlock": 8,
+        "description": "A simple wooden shield."
+      },
+      "gemSlots": 0
+    }
+  ],
+  "bows": [
+    {
+      "name": "Basic Bow",
+      "moves": [
+        {
+          "name": "Arrow Shot",
+          "minEnergy": 1,
+          "maxEnergy": 3,
+          "damage": [5, 10, 15],
+          "enhancedThreshold": 3,
+          "description": "A basic bow attack."
+        }
+      ],
+      "gemSlots": 0
+    }
+  ],
+  "gems": [],
+  "armor": {
+    "helmets": [
+      { "name": "Leather Cap", "defense": 2, "gemSlots": 0 },
+      { "name": "Iron Helmet", "defense": 4, "gemSlots": 0 }
+    ],
+    "body": [
+      { "name": "Leather Tunic", "defense": 4, "gemSlots": 0 },
+      { "name": "Iron Armor", "defense": 8, "gemSlots": 0 }
+    ],
+    "leggings": [
+      { "name": "Leather Pants", "defense": 3, "gemSlots": 0 },
+      { "name": "Iron Leggings", "defense": 5, "gemSlots": 0 }
+    ],
+    "gloves": [
+      { "name": "Leather Gloves", "defense": 2, "gemSlots": 0 },
+      { "name": "Iron Gloves", "defense": 3, "gemSlots": 0 }
+    ],
+    "boots": [
+      { "name": "Leather Boots", "defense": 2, "gemSlots": 0 },
+      { "name": "Iron Boots", "defense": 3, "gemSlots": 0 }
+    ]
+  }
+}

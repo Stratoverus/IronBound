@@ -1,0 +1,15 @@
+{
+  "swords": [],
+  "spears": [],
+  "staffs": [],
+  "shields": [],
+  "gems": [],
+  "armor": {
+    "helmets": [],
+    "body": [],
+    "leggings": [],
+    "gloves": [],
+    "boots": []
+  },
+  "upgradeCostNote": "Legendary item upgrades require special resources."
+}

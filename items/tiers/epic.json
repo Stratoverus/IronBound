@@ -1,0 +1,251 @@
+{
+  "swords": [
+    {
+      "name": "Vampire Blade",
+      "moves": [
+        {
+          "name": "Blood Slash",
+          "type": "attack",
+          "minEnergy": 3,
+          "maxEnergy": 8,
+          "amount": [25, 40, 60],
+          "enhancedThreshold": 8,
+          "description": "Deals damage and heals for a portion of it.",
+          "attackPassive": [
+            {
+              "effectType": "lifesteal",
+              "target": "self",
+              "amount": [10, 20, 30],
+              "type": "flat",
+              "description": "Heals for a portion of damage dealt."
+            }
+          ],
+          "enhancedEffect": [
+            {
+              "effectType": "lifesteal",
+              "target": "self",
+              "type": "percent",
+              "amount": 20,
+              "description": "Additional percentage lifesteal."
+            }
+          ]
+        },
+        {
+          "name": "Night Surge",
+          "type": "buff",
+          "minEnergy": 5,
+          "maxEnergy": 10,
+          "amount": [15, 30, 50],
+          "enhancedThreshold": 10,
+          "description": "Buffs attack for two turns.",
+          "attackPassive": [],
+          "enhancedEffect": [
+            {
+              "effectType": "lifesteal",
+              "target": "self",
+              "type": "percent",
+              "amount": 20,
+              "description": "Adds percentage lifesteal to next attack."
+            }
+          ]
+        }
+      ],
+      "passive": [
+        {
+          "effectType": "energyRestore",
+          "target": "self",
+          "trigger": "startOfTurn",
+          "amount": 2,
+          "type": "flat",
+          "description": "Regenerates 2 energy per turn."
+        }
+      ],
+      "gemSlots": 2
+    }
+  ],
+  "spears": [
+    {
+      "name": "Storm Pike",
+      "moves": [
+        {
+          "name": "Lightning Thrust",
+          "minEnergy": 4,
+          "maxEnergy": 9,
+          "damage": [30, 50, 75],
+          "element": "lightning",
+          "enhancedThreshold": 9,
+          "description": "Deals lightning damage."
+        },
+        {
+          "name": "Chain Strike",
+          "minEnergy": 6,
+          "maxEnergy": 12,
+          "damage": [12, 24, 40],
+          "hits": [3, 4, 5],
+          "enhancedThreshold": 12,
+          "description": "Hits multiple enemies."
+        }
+      ],
+      "passive": "Chance to stun on hit.",
+      "gemSlots": 2
+    }
+  ],
+  "staffs": [
+    {
+      "name": "Frost Scepter",
+      "moves": [
+        {
+          "name": "Ice Shard",
+          "minEnergy": 4,
+          "maxEnergy": 9,
+          "damage": [28, 45, 70],
+          "element": "ice",
+          "enhancedThreshold": 9,
+          "description": "Deals ice damage and may freeze."
+        },
+        {
+          "name": "Frozen Veil",
+          "minEnergy": 5,
+          "maxEnergy": 10,
+          "buff": "defense",
+          "buffAmount": [20, 35, 60],
+          "enhancedThreshold": 10,
+          "description": "Greatly buffs defense for two turns."
+        }
+      ],
+      "passive": "Reduces incoming fire damage by 20%.",
+      "gemSlots": 2
+    }
+  ],
+  "shields": [
+    {
+      "name": "Guardian Shield",
+      "moves": [
+        {
+          "name": "Energy Block",
+          "minEnergy": 3,
+          "maxEnergy": 8,
+          "blockPercent": [20, 40, 60],
+          "enhancedThreshold": 8,
+          "description": "Blocks incoming damage for one turn. More energy = more block."
+        }
+      ],
+      "passive": "Blocks 10% of all incoming damage.",
+      "gemSlots": 2
+    }
+  ],
+  "gems": [
+    {
+      "name": "Life Gem",
+      "effects": {
+        "weapon": {
+          "base": {
+            "effectType": "heal",
+            "target": "self",
+            "percentOfDamage": 20,
+            "description": "Heals 20% of damage dealt as HP."
+          },
+          "overcharge": {
+            "effectType": "heal",
+            "target": "allAllies",
+            "amount": 15,
+            "plusEnergy": 3,
+            "description": "Triggers 'Vital Surge': heals all allies for 15 HP."
+          }
+        },
+        "helmet": {
+          "effectType": "energyRestore",
+          "target": "self",
+          "amount": 2,
+          "description": "Restores 2 energy per turn."
+        },
+        "body": {
+          "effectType": "heal",
+          "target": "self",
+          "amount": 7,
+          "description": "Heals 7 HP per turn."
+        },
+        "shield": {
+          "base": {
+            "effectType": "heal",
+            "target": "self",
+            "amount": 10,
+            "description": "Heals 10 HP when blocking."
+          },
+          "overcharge": {
+            "effectType": "block",
+            "target": "self",
+            "blockAll": true,
+            "heal": 20,
+            "plusEnergy": 3,
+            "description": "Triggers 'Barrier Burst': blocks all damage and heals for 20 HP."
+          }
+        }
+      }
+    },
+    {
+      "name": "Thunder Gem",
+      "effects": {
+        "weapon": {
+          "base": {
+            "effectType": "damage",
+            "target": "enemy",
+            "element": "lightning",
+            "amount": "moderate",
+            "description": "Adds lightning damage to attacks."
+          },
+          "overcharge": {
+            "effectType": "damage",
+            "target": "allEnemies",
+            "element": "lightning",
+            "amount": "high",
+            "plusEnergy": 4,
+            "description": "Triggers 'Thunderstorm': deals AoE lightning damage to all enemies."
+          }
+        },
+        "helmet": {
+          "effectType": "reduceCost",
+          "target": "self",
+          "amount": 1,
+          "description": "Reduces energy cost of moves by 1."
+        },
+        "body": {
+          "effectType": "resist",
+          "target": "self",
+          "element": "lightning",
+          "amount": 20,
+          "description": "Reduces lightning damage taken by 20%."
+        },
+        "shield": {
+          "base": {
+            "effectType": "reflect",
+            "target": "attacker",
+            "element": "lightning",
+            "amount": 15,
+            "description": "Reflects 15% lightning damage when blocking."
+          },
+          "overcharge": {
+            "effectType": "stun",
+            "target": "allAttackers",
+            "duration": 1,
+            "plusEnergy": 4,
+            "description": "Triggers 'Shockwave': stuns all attackers for 1 turn."
+          }
+        }
+      }
+    }
+  ],
+  "body": [
+    { "name": "Vampire Plate", "defense": 20, "passive": "Heals 10 HP on hit.", "gemSlots": 2 }
+  ],
+  "leggings": [
+    { "name": "Frost Leggings", "defense": 14, "passive": "Reduces ice damage taken.", "gemSlots": 2 }
+  ],
+  "gloves": [
+    { "name": "Guardian Gauntlets", "defense": 8, "passive": "Blocks 5% of incoming damage.", "gemSlots": 2 }
+  ],
+  "boots": [
+    { "name": "Thunder Boots", "defense": 8, "passive": "+2 movement speed.", "gemSlots": 2 }
+  ]
+}
+

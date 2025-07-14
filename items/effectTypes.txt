@@ -1,0 +1,12 @@
+Attacks
+
+types: "attack", "buff"
+target: "
+
+
+effectType: "heal", "damage", "energyRestore", "reduceCost", "reflect", "block", "stun", etc.
+target: "self", "allies", "enemies", "singleEnemy", etc.
+amount: Numeric value (e.g., heal 7 HP, restore 2 energy).
+element: "fire", "lightning", etc. (if applicable)
+trigger: "startOfTurn",
+plusEnergy: Numeric value for overcharge

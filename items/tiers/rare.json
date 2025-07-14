@@ -1,0 +1,247 @@
+{
+  "swords": [
+    {
+      "name": "Iron Sword",
+      "moves": [
+        {
+          "name": "Slash",
+          "minEnergy": 2,
+          "maxEnergy": 6,
+          "damage": [10, 20, 35],
+          "enhancedThreshold": 5,
+          "description": "A basic sword attack. More energy = more damage."
+        },
+        {
+          "name": "Power Strike",
+          "minEnergy": 4,
+          "maxEnergy": 8,
+          "damage": [20, 40, 60],
+          "enhancedThreshold": 8,
+          "description": "A heavy attack."
+        }
+      ],
+      "gemSlots": 1
+    }
+  ],
+  "spears": [
+    {
+      "name": "Spear",
+      "moves": [
+        {
+          "name": "Piercing Thrust",
+          "minEnergy": 2,
+          "maxEnergy": 6,
+          "damage": [12, 24, 40],
+          "enhancedThreshold": 5,
+          "description": "A precise spear attack. More energy = more damage."
+        },
+        {
+          "name": "Multi-Strike",
+          "minEnergy": 4,
+          "maxEnergy": 8,
+          "damage": [8, 16, 28],
+          "hits": [2, 3, 4],
+          "enhancedThreshold": 7,
+          "description": "Hits multiple times. More energy = more hits."
+        }
+      ],
+      "gemSlots": 1
+    }
+  ],
+  "staffs": [
+    {
+      "name": "Arcane Staff",
+      "moves": [
+        {
+          "name": "Magic Bolt",
+          "minEnergy": 3,
+          "maxEnergy": 7,
+          "damage": [15, 30, 50],
+          "enhancedThreshold": 6,
+          "description": "A ranged magic attack."
+        },
+        {
+          "name": "Mana Shield",
+          "minEnergy": 2,
+          "maxEnergy": 5,
+          "buff": "defense",
+          "buffAmount": [5, 10, 20],
+          "enhancedThreshold": 5,
+          "description": "Buffs defense for one turn."
+        }
+      ],
+      "gemSlots": 2
+    }
+  ],
+  "shields": [],
+  "gems": [
+    {
+      "name": "Vitalite Gem",
+      "effects": {
+        "weapon": {
+          "base": {
+            "effectType": "heal",
+            "target": "self",
+            "percentOfDamage": 10,
+            "description": "Heals 10% of damage dealt as HP."
+          },
+          "overcharge": {
+            "effectType": "heal",
+            "target": "self",
+            "amount": 7,
+            "plusEnergy": 2,
+            "description": "Triggers 'Vital Pulse': heals self for 7 HP."
+          }
+        },
+        "helmet": {
+          "effectType": "energyRestore",
+          "target": "self",
+          "amount": 1,
+          "description": "Restores 1 energy per turn."
+        },
+        "body": {
+          "effectType": "heal",
+          "target": "self",
+          "amount": 3,
+          "description": "Heals 3 HP per turn."
+        },
+        "shield": {
+          "base": {
+            "effectType": "heal",
+            "target": "self",
+            "amount": 5,
+            "description": "Heals 5 HP when blocking."
+          },
+          "overcharge": {
+            "effectType": "block",
+            "target": "self",
+            "blockAll": true,
+            "heal": 10,
+            "plusEnergy": 2,
+            "description": "Triggers 'Barrier Guard': blocks all damage and heals for 10 HP."
+          }
+        }
+      }
+    },
+    {
+      "name": "Voltite Gem",
+      "effects": {
+        "weapon": {
+          "base": {
+            "effectType": "damage",
+            "target": "enemy",
+            "element": "lightning",
+            "amount": "minor",
+            "description": "Adds minor lightning damage to attacks."
+          },
+          "overcharge": {
+            "effectType": "damage",
+            "target": "allEnemies",
+            "element": "lightning",
+            "amount": "moderate",
+            "plusEnergy": 2,
+            "description": "Triggers 'Spark Burst': deals lightning damage to all enemies."
+          }
+        },
+        "helmet": {
+          "effectType": "reduceCost",
+          "target": "self",
+          "amount": 1,
+          "description": "Reduces energy cost of moves by 1 (once per turn)."
+        },
+        "body": {
+          "effectType": "resist",
+          "target": "self",
+          "element": "lightning",
+          "amount": 10,
+          "description": "Reduces lightning damage taken by 10%."
+        },
+        "shield": {
+          "base": {
+            "effectType": "reflect",
+            "target": "attacker",
+            "element": "lightning",
+            "amount": 5,
+            "description": "Reflects 5% lightning damage when blocking."
+          },
+          "overcharge": {
+            "effectType": "stun",
+            "target": "singleAttacker",
+            "duration": 1,
+            "plusEnergy": 2,
+            "description": "Triggers 'Static Shield': stuns attackers for 1 turn (single target)."
+          }
+        }
+      }
+    },
+    {
+      "name": "Pyrite Gem",
+      "effects": {
+        "weapon": {
+          "base": {
+            "effectType": "damage",
+            "target": "enemy",
+            "element": "fire",
+            "amount": "minor",
+            "description": "Adds minor fire damage to attacks."
+          },
+          "overcharge": {
+            "effectType": "damage",
+            "target": "allEnemies",
+            "element": "fire",
+            "amount": "moderate",
+            "plusEnergy": 2,
+            "description": "Triggers 'Inferno Burst': deals fire damage to all enemies."
+          }
+        },
+        "helmet": {
+          "effectType": "energyRestore",
+          "target": "self",
+          "amount": 1,
+          "description": "Restores 1 energy per turn."
+        },
+        "body": {
+          "effectType": "resist",
+          "target": "self",
+          "element": "fire",
+          "amount": 10,
+          "description": "Reduces fire damage taken by 10%."
+        },
+        "shield": {
+          "base": {
+            "effectType": "reflect",
+            "target": "attacker",
+            "element": "fire",
+            "amount": 5,
+            "description": "Reflects 5% fire damage when blocking."
+          },
+          "overcharge": {
+            "effectType": "block",
+            "target": "self",
+            "blockAll": true,
+            "heal": 10,
+            "plusEnergy": 2,
+            "description": "Triggers 'Flame Guard': blocks all fire damage and heals for 10 HP."
+          }
+        }
+      }
+    }
+  ],
+  "armor": {
+    "helmets": [
+      { "name": "Iron Helmet", "defense": 5, "gemSlots": 1 }
+    ],
+    "body": [
+      { "name": "Iron Armor", "defense": 10, "gemSlots": 1 }
+    ],
+    "leggings": [
+      { "name": "Iron Leggings", "defense": 6, "gemSlots": 1 }
+    ],
+    "gloves": [
+      { "name": "Iron Gloves", "defense": 4, "gemSlots": 1 }
+    ],
+    "boots": [
+      { "name": "Iron Boots", "defense": 4, "gemSlots": 1 }
+    ]
+  }
+}

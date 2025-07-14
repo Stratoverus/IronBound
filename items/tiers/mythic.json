@@ -1,0 +1,16 @@
+{
+  "swords": [],
+  "spears": [],
+  "staffs": [],
+  "shields": [],
+  "gems": [],
+  "armor": {
+    "helmets": [],
+    "body": [],
+    "leggings": [],
+    "gloves": [],
+    "boots": []
+  },
+  "upgradeable": false,
+  "upgradeNote": "Mythic items cannot be upgraded."
+}
