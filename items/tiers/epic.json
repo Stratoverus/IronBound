@@ -6,11 +6,18 @@
         {
           "name": "Blood Slash",
           "type": "attack",
+          "category": "damage",
           "minEnergy": 3,
           "maxEnergy": 8,
           "amount": [25, 40, 60],
+          "amountType": "flat",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "single",
+          "duration": 0,
           "enhancedThreshold": 8,
-          "description": "Deals damage and heals for a portion of it.",
+          "cooldown": 0,
+          "description": "Deals damage and heals for a portion of it. Small chance to inflict bleed.",
           "attackPassive": [
             {
               "effectType": "lifesteal",
@@ -20,31 +27,46 @@
               "description": "Heals for a portion of damage dealt."
             }
           ],
+          "statusEffects": [
+            { 
+              "type": "bleed", "chance": 10, "duration": 2 
+            }
+          ],
           "enhancedEffect": [
             {
               "effectType": "lifesteal",
               "target": "self",
               "type": "percent",
               "amount": 20,
-              "description": "Additional percentage lifesteal."
+              "duration": 0,
+              "description": "Additional lifesteal percentage."
             }
           ]
         },
         {
           "name": "Night Surge",
-          "type": "buff",
+          "type": "effect",
+          "category": "buff",
           "minEnergy": 5,
           "maxEnergy": 10,
           "amount": [15, 30, 50],
+          "amountType": "percent",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "self",
+          "duration": 2,
           "enhancedThreshold": 10,
+          "cooldown": 0,
           "description": "Buffs attack for two turns.",
           "attackPassive": [],
+          "statusEffects": [],
           "enhancedEffect": [
             {
               "effectType": "lifesteal",
               "target": "self",
               "type": "percent",
               "amount": 20,
+              "duration": 1,
               "description": "Adds percentage lifesteal to next attack."
             }
           ]
@@ -69,24 +91,64 @@
       "moves": [
         {
           "name": "Lightning Thrust",
+          "type": "attack",
+          "category": "damage",
           "minEnergy": 4,
           "maxEnergy": 9,
-          "damage": [30, 50, 75],
-          "element": "lightning",
+          "amount": [30, 50, 75],
+          "amountType": "flat",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "single",
+          "duration": 0,
           "enhancedThreshold": 9,
-          "description": "Deals lightning damage."
+          "cooldown": 0,
+          "description": "Deals high damage. Additional chance to stun.",
+          "attackPassive": [],
+          "statusEffects": [
+            { "type": "stun", "chance": 15, "duration": 1 }
+          ],
+          "enhancedEffect": [
+            {
+              "effectType": "stun",
+              "target": "target",
+              "type": "percent",
+              "amount": 20,
+              "duration": 0,
+              "description": "Additional stun percentage."
+            }
+          ]
         },
         {
           "name": "Chain Strike",
+          "type": "attack",
+          "category": "damage",
           "minEnergy": 6,
           "maxEnergy": 12,
-          "damage": [12, 24, 40],
-          "hits": [3, 4, 5],
+          "amount": [12, 24, 40],
+          "amountType": "flat",
+          "numAttacks": [3, 4, 5],
+          "numTargets": 1,
+          "targetType": "single",
+          "duration": 0,
           "enhancedThreshold": 12,
-          "description": "Hits multiple enemies."
+          "cooldown": 0,
+          "description": "Hits multiple times.",
+          "attackPassive": [],
+          "statusEffects": [],
+          "enhancedEffect": []
         }
       ],
-      "passive": "Chance to stun on hit.",
+      "passive": [
+        {
+          "effectType": "stunChance",
+          "target": "enemy",
+          "trigger": "onHit",
+          "amount": 15,
+          "type": "percent",
+          "description": "15% chance to stun on hit."
+        }
+      ],
       "gemSlots": 2
     }
   ],
@@ -96,24 +158,55 @@
       "moves": [
         {
           "name": "Ice Shard",
+          "type": "attack",
+          "category": "damage",
           "minEnergy": 4,
           "maxEnergy": 9,
-          "damage": [28, 45, 70],
-          "element": "ice",
+          "amount": [28, 45, 70],
+          "amountType": "flat",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "single",
+          "duration": 0,
           "enhancedThreshold": 9,
-          "description": "Deals ice damage and may freeze."
+          "cooldown": 0,
+          "description": "Deals physical damage. Chance to freeze.",
+          "attackPassive": [],
+          "statusEffects": [
+            { "type": "freeze", "chance": 20, "duration": 1 }
+          ],
+          "enhancedEffect": []
         },
         {
           "name": "Frozen Veil",
+          "type": "effect",
+          "category": "buff",
           "minEnergy": 5,
           "maxEnergy": 10,
-          "buff": "defense",
-          "buffAmount": [20, 35, 60],
+          "amount": [20, 35, 60],
+          "amountType": "percent",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "self",
+          "duration": 2,
           "enhancedThreshold": 10,
-          "description": "Greatly buffs defense for two turns."
+          "cooldown": 0,
+          "description": "Greatly buffs defense for two turns.",
+          "attackPassive": [],
+          "statusEffects": [],
+          "enhancedEffect": []
         }
       ],
-      "passive": "Reduces incoming fire damage by 20%.",
+      "passive": [
+        {
+          "effectType": "fireResist",
+          "target": "self",
+          "trigger": "always",
+          "amount": 20,
+          "type": "percent",
+          "description": "Reduces incoming fire damage by 20%."
+        }
+      ],
       "gemSlots": 2
     }
   ],
@@ -123,14 +216,34 @@
       "moves": [
         {
           "name": "Energy Block",
+          "type": "effect",
+          "category": "block",
           "minEnergy": 3,
           "maxEnergy": 8,
-          "blockPercent": [20, 40, 60],
+          "amount": [20, 40, 60],
+          "amountType": "percent",
+          "numAttacks": 1,
+          "numTargets": 1,
+          "targetType": "self",
+          "duration": 1,
           "enhancedThreshold": 8,
-          "description": "Blocks incoming damage for one turn. More energy = more block."
+          "cooldown": 0,
+          "description": "Blocks incoming damage for one turn. More energy = more block.",
+          "attackPassive": [],
+          "statusEffects": [],
+          "enhancedEffect": []
         }
       ],
-      "passive": "Blocks 10% of all incoming damage.",
+      "passive": [
+        {
+          "effectType": "damageBlock",
+          "target": "self",
+          "trigger": "always",
+          "amount": 10,
+          "type": "percent",
+          "description": "Blocks 10% of all incoming damage."
+        }
+      ],
       "gemSlots": 2
     }
   ],
@@ -235,17 +348,87 @@
       }
     }
   ],
-  "body": [
-    { "name": "Vampire Plate", "defense": 20, "passive": "Heals 10 HP on hit.", "gemSlots": 2 }
-  ],
-  "leggings": [
-    { "name": "Frost Leggings", "defense": 14, "passive": "Reduces ice damage taken.", "gemSlots": 2 }
-  ],
-  "gloves": [
-    { "name": "Guardian Gauntlets", "defense": 8, "passive": "Blocks 5% of incoming damage.", "gemSlots": 2 }
-  ],
-  "boots": [
-    { "name": "Thunder Boots", "defense": 8, "passive": "+2 movement speed.", "gemSlots": 2 }
-  ]
+  "armor": {
+    "helmet": [
+      {
+        "name": "Crystal Helm",
+        "defense": 12,
+        "passive": [
+          {
+            "effectType": "magicResist",
+            "target": "self",
+            "type": "percent",
+            "amount": 10,
+            "description": "Reduces magic damage taken by 10%."
+          }
+        ],
+        "gemSlots": 1
+      }
+    ],
+    "body": [
+      {
+        "name": "Vampire Plate",
+        "defense": 20,
+        "passive": [
+          {
+            "effectType": "healOnHit",
+            "target": "self",
+            "type": "flat",
+            "amount": 10,            
+            "description": "Heals 10 HP on hit."
+          }
+        ],
+        "gemSlots": 2
+      }
+    ],
+    "leggings": [
+      {
+        "name": "Hardened Leggings",
+        "defense": 14,
+        "passive": [
+          {
+            "effectType": "resist",
+            "target": "self",
+            "type": "percent",
+            "amount": 20,
+            "description": "Reduces damage taken by 20%."
+          }
+        ],
+        "gemSlots": 0
+      }
+    ],
+    "gloves": [
+      {
+        "name": "Guardian Gauntlets",
+        "defense": 8,
+        "passive": [
+          {
+            "effectType": "damageBlock",
+            "target": "self",
+            "type": "flat",
+            "amount": 10,            
+            "description": "Blocks 10 points of incoming damage."
+          }
+        ],
+        "gemSlots": 0
+      }
+    ],
+    "boots": [
+      {
+        "name": "Thunder Boots",
+        "defense": 8,
+        "passive": [
+          {
+            "effectType": "speedBoost",
+            "target": "self",
+            "type": "flat",
+            "amount": 2,            
+            "description": "+2 speed."
+          }
+        ],
+        "gemSlots": 0
+      }
+    ]
+  }
 }
 
