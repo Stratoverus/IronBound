@@ -38,7 +38,6 @@ void Character::levelUp() {
     health += 20;
     baseDamage += 5;
     defense += 2;
-    // ...existing code...
 }
 
 std::vector<Move> Character::getUnlockedMoves() const {

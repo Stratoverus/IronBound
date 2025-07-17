@@ -6,36 +6,36 @@
 const std::vector<ChoiceEvent> Event::CHOICE_EVENTS = {
     {"You find a mysterious altar glowing with energy. What do you do?",
         {
-            {"Touch the altar (Take 10 damage, gain 25 XP)", [](Character& p){ p.takeDamage(10); p.gainXP(25); /* ...existing code... */ }},
-            {"Pray at the altar (Heal 15 HP, lose 10 XP)", [](Character& p){ p.health += 15; p.gainXP(-10); /* ...existing code... */ }},
-            {"Ignore it and move on", [](Character&){ /* ...existing code... */ }}
+            {"Touch the altar (Take 10 damage, gain 25 XP)", [](Character& p){ p.takeDamage(10); p.gainXP(25);}},
+            {"Pray at the altar (Heal 15 HP, lose 10 XP)", [](Character& p){ p.health += 15; p.gainXP(-10);}},
+            {"Ignore it and move on", [](Character&){ }}
         }
     },
     {"A wounded traveler offers you a potion in exchange for some XP. What do you do?",
         {
-            {"Trade 15 XP for a potion (Heal 30 HP)", [](Character& p){ p.gainXP(-15); p.health += 30; /* ...existing code... */ }},
-            {"Refuse the offer", [](Character&){ /* ...existing code... */ }}
+            {"Trade 15 XP for a potion (Heal 30 HP)", [](Character& p){ p.gainXP(-15); p.health += 30;}},
+            {"Refuse the offer", [](Character&){}}
         }
     },
     {"You find a cursed book. It promises power at a price.",
         {
-            {"Read the book (Take 20 damage, gain 40 XP)", [](Character& p){ p.takeDamage(20); p.gainXP(40); /* ...existing code... */ }},
-            {"Burn the book (Nothing happens)", [](Character&){ /* ...existing code... */ }},
-            {"Leave it alone", [](Character&){ /* ...existing code... */ }}
+            {"Read the book (Take 20 damage, gain 40 XP)", [](Character& p){ p.takeDamage(20); p.gainXP(40);}},
+            {"Burn the book (Nothing happens)", [](Character&){}},
+            {"Leave it alone", [](Character&){}}
         }
     },
     {"A healing spring bubbles up from the ground.",
         {
-            {"Drink from the spring (Heal 20 HP, lose 10 XP)", [](Character& p){ p.health += 20; p.gainXP(-10); /* ...existing code... */ }},
-            {"Rest by the spring (Heal 10 HP)", [](Character& p){ p.health += 10; /* ...existing code... */ }},
-            {"Move on", [](Character&){ /* ...existing code... */ }}
+            {"Drink from the spring (Heal 20 HP, lose 10 XP)", [](Character& p){ p.health += 20; p.gainXP(-10);}},
+            {"Rest by the spring (Heal 10 HP)", [](Character& p){ p.health += 10;}},
+            {"Move on", [](Character&){}}
         }
     },
     {"[PROCEDURAL] You encounter something unusual...",
         {
-            {"[Procedural Option 1]", [](Character& p){ /* Placeholder, see below */ }},
-            {"[Procedural Option 2]", [](Character& p){ /* Placeholder, see below */ }},
-            {"[Procedural Option 3]", [](Character& p){ /* Placeholder, see below */ }}
+            {"[Procedural Option 1]", [](Character& p){ /* TO BE WORKED ON */ }},
+            {"[Procedural Option 2]", [](Character& p){ /* TO BE WORKED ON */ }},
+            {"[Procedural Option 3]", [](Character& p){ /* TO BE WORKED ON */ }}
         }
     }
 };
@@ -49,32 +49,22 @@ void Event::trigger(Character& player, int floor) {
             int atk = 8 + floor * 2;
             int def = 2 + floor / 5;
             Character enemy("Floor " + std::to_string(floor) + " Foe", "Foe", base, atk, def, 0, 0, floor/10+1);
-            // ...existing code...
             while (player.health > 0 && enemy.health > 0) {
-                // ...existing code...
-                // ...existing code...
                 auto unlocked = player.getUnlockedMoves();
-                // ...existing code...
                 for (size_t i = 0; i < unlocked.size(); ++i) {
-                    // ...existing code...
                 }
                 int action;
                 std::cin >> action;
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 int dmg = player.attackEnemy(enemy, action-1);
-                // ...existing code...
                 if (enemy.health > 0) {
                     int enemyAtk = rand() % enemy.getUnlockedMoves().size();
                     int edmg = enemy.attackEnemy(player, enemyAtk);
-                    // ...existing code...
                 }
             }
             if (player.health > 0) {
-                // ...existing code...
                 player.gainXP(10 + floor * 2);
-                // ...existing code...
             } else {
-                // ...existing code...
             }
         }
         break;

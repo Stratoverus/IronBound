@@ -34,7 +34,6 @@ void CharacterStatsScreen::setStats(
     const std::vector<std::string>& inventory,
     const std::vector<std::string>& equipped
 ) {
-    // ...existing code...
     nameText->setString("Name: " + name);
     classText->setString("Class: " + className);
     hpText->setString("HP: " + std::to_string(hp) + " / " + std::to_string(maxHp));
@@ -74,11 +73,9 @@ void CharacterStatsScreen::setStats(
 void CharacterStatsScreen::show() {
     visible = true;
     openClock.restart();
-    // ...existing code...
 }
 void CharacterStatsScreen::hide() {
     visible = false;
-    // ...existing code...
 }
 bool CharacterStatsScreen::isVisible() const { return visible; }
 
@@ -97,7 +94,6 @@ void CharacterStatsScreen::handleEvent(const sf::Event& event, sf::RenderWindow&
 
 void CharacterStatsScreen::draw(sf::RenderWindow& window) {
     if (!visible) return;
-    // ...existing code...
     sf::Vector2u winSize = window.getSize();
     float overlayW = winSize.x * 0.8f;
     float overlayH = winSize.y * 0.8f;

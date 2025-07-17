@@ -104,7 +104,6 @@ int main() {
         // Poll events and handle modal overlays first
         while (auto eventOpt = window.pollEvent()) {
             const auto& event = *eventOpt;
-            // ...existing code...
             if (event.is<sf::Event::Closed>()) {
                 window.close();
             }
@@ -211,7 +210,6 @@ int main() {
                     if (showCharButton && charButton.getGlobalBounds().contains(worldPos)) charHovered = true;
                 }
             }
-        // ...existing game logic (unchanged)...
         if (!fading && !popupMenu.isVisible() && !statsScreen.isVisible()) {
             if (currentScreen == GameScreen::Menu) {
                 menuScreen.handleEvent(event, window, hovered, menuSelected);
@@ -356,7 +354,6 @@ int main() {
             window.display();
             continue;
         }
-        // ...existing code...
         if (currentScreen == GameScreen::Menu) {
             menuScreen.draw(window, hovered);
         } else if (currentScreen == GameScreen::NameEntry) {
