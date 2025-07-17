@@ -7,7 +7,7 @@ The game challenges players to progress through a series of procedurally generat
 
 This game is currently not completed. As I made this game, feature creep became a real threat. I started adding more and more features, and of course, with each feature made, dozens of hours were required to finish this. I am showing off what I have right now, but plan on continuing this as I truly believe I have something unique here that could be really fun.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/pBEaVvaKF7A)
 
 # Development Environment
 
